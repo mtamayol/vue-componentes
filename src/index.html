@@ -4,7 +4,7 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 <body>
-    <div id="demo">
+    <div id="app">
         <personajes></personajes>
     </div>
 
@@ -14,7 +14,7 @@
 <script>
     Vue.component('personajes', {
         template:
-            '<div class="div__image">hola<ul id="example-1"><li v-for="personaje in personajes">{{ personaje.nombre }}</li></ul></div>',
+            '<div class="div__image"><ul id="listaPersonajes"><li v-for="personaje in personajes" class="div__li"><img class="img__personaje" v-bind:src="personaje.imagen"/>{{ personaje.nombre }}</li></ul></div>',
         data() {
             return {
                 personajes: [
@@ -44,12 +44,29 @@
         }
     });
 
-    const app = new Vue({ el: '#demo' });
+    const app = new Vue({ el: '#app' });
 </script>
 <style>
     .div__image{
         background-image:url('https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png');
-        height:277%;
+        height:auto;
+    }
+    .div__li{
+        color: forestgreen;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 300px;
+        padding:6px;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .img__personaje{
+        width: 120px;
+        border-radius: 50%;
+    }
+    #listaPersonajes{
+        padding: 40px;
     }
 
 </style>
